@@ -1,0 +1,15 @@
+h2 { color: #FFFFFF; }
+p {color: #FFFFFF; }
+#form-container {background-color:#00BFFF;
+      padding:50px;
+      width: 400px;}
+input {float: right;
+       width: 300px;}
+
+input.error {
+	border:2px solid red;
+}
+
+#submit {
+	width: 70px;
+}
