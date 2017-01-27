@@ -23,14 +23,17 @@ $result=mysql_query('SELECT * FROM `users`'); // sending request to DB for all b
 
 ?>
 <table> 
+	<thead>
 	<tr>
-		<td>First name</td> 
-		<td>Last name</td>
-		<td>Job</td>
-		<td>Company</td>
-		<td>Phone</td>
-		<td>Email</td>
+		<td><a href="#">First name</a></td>
+		<td><a href="#">Last name</a></td>
+		<td><a href="#">Job</a></td>
+		<td><a href="#">Company</a></td>
+		<td><a href="#">Phone</a></td>
+		<td><a href="#">Email</a></td>
 	</tr>
+</thead>
+<tbody>
 <?php	
 while($row=mysql_fetch_assoc($result))
 {
@@ -63,6 +66,7 @@ echo '<tr><td>'.$row['fname'].'</td>'.'<td>'.$row['lname'].'</td>'.'<td>'.$row['
 	
 
 ?>
+</tbody>
 </table>
 <?php mysql_close($link); //close connection
 ?>
