@@ -19,22 +19,57 @@ $link = mysql_connect($host, $user, $password) // to server
 
 mysql_select_db("test_db") or die(mysql_error());
 
-$result=mysql_query('SELECT * FROM `users`'); // sending request to DB for all base
+// массив полей для сортировки
+
+$sort_fields=array('fname','lname', 'job', 'company', 'phone', 'mail');
+
+
+
+
+
+//$result=mysql_query('SELECT * FROM `users`'); // sending request to DB for all base
+
+
+
+
+
+$query = "SELECT * FROM users ORDER BY $sort_by DESC"; $result = mysql_query($query);
+
 
 ?>
 <table> 
 	<thead>
 	<tr>
-		<td><a href="#">First name</a></td>
-		<td><a href="#">Last name</a></td>
-		<td><a href="#">Job</a></td>
-		<td><a href="#">Company</a></td>
-		<td><a href="#">Phone</a></td>
-		<td><a href="#">Email</a></td>
+		<td><a href="http://ira.task/vitalik/dbcontent.php?sort_by=fname">First name</a></td>
+		<td><a href="http://ira.task/vitalik/dbcontent.php?sort_by=lname">Last name</a></td>
+		<td><a href="http://ira.task/vitalik/dbcontent.php?sort_by=job">Job</a></td>
+		<td><a href="http://ira.task/vitalik/dbcontent.php?sort_by=company">Company</a></td>
+		<td><a href="http://ira.task/vitalik/dbcontent.php?sort_by=phone">Phone</a></td>
+		<td><a href="http://ira.task/vitalik/dbcontent.php?sort_by=mail">Email</a></td>
 	</tr>
 </thead>
 <tbody>
 <?php	
+
+
+
+
+$sort_by = ($_GET["sort_by"]);
+//  // // Если значение переменной $key не задано, по умолчанию
+// используется значение 'fname'
+
+if(! isset($sort_by)) :
+  $sort_by = "fname";
+endif;
+
+$query = "SELECT * FROM users ORDER BY $sort_by DESC"; $result = mysql_query($query);
+
+
+
+
+
+
+
 while($row=mysql_fetch_assoc($result))
 {
 	print_r($row);
@@ -48,7 +83,7 @@ echo '<tr><td>'.$row['fname'].'</td>'.'<td>'.$row['lname'].'</td>'.'<td>'.$row['
 */
 
 
-	print '<tr><td>' . implode('</td><td>', $row) .'</td></tr>';
+//	print '<tr><td>' . implode('</td><td>', $row) .'</td></tr>';
 
 /*
 	foreach($row as $key => $value) {

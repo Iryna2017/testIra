@@ -224,10 +224,124 @@
 
 	//SUBSTR
 
-	$ph1 = "Я люблю РНР";
+	$ph1 = "I love PHP";
 	echo substr($ph1, 4,5);
+	echo substr($ph1, -3);
 
-	
+	// STRLEN
+	echo strlen($ph1);
+
+	// STRPOS STRSTR
+	$email = "chris@lightwood.net";
+	echo strpos($email,"@");
+
+	echo strstr ($email, "@");
+	echo strstr($email, strpos ($email,"@"));
+
+	// UNIT 7 ARRAYS
+	$temps = array(28,40,49,60,70,79,84,83,79,65,54,42);
+
+	print "<PRE>";
+	print_r($temps);
+	print "</PRE>";
+	echo $temps[2];
+	$temps[10] = 50;
+
+	print_r:
+		while (list($key, $value) = each($temps)) {
+			echo "Ключ $key имеет значение $value <br>";
+		}
+
+	foreach ($temps as $key => $value) {
+			echo "Ключ $key имеет значение $value <br>";
+	}
+	$temps = array();
+
+	// ASSOCIATIC ARRAYS
+	$temps2 = array("jan" => 38, "feb" => 40, "mar" => 49,
+		            "apr" => 60, "may" => 70, "jun" => 79,
+		            "jul" => 84, "aug" => 83, "sep" => 76,
+		            "oct" => 65, "nov" => 54, "dec" => 42,);
+	echo $temps2["feb"];
+	print_r($temps2);
+
+	// SORT ASORT KSORT
+	asort($temps2);
+	print_r($temps2);
+
+	ksort($temps2);
+	print_r($temps2);
+
+	array_reverse($temps2);
+    print_r($temps2);	
+
+    shuffle($temps2);
+    print_r($temps2);
+
+    // ARRAY_MERGE
+    $temps3 = array ("jan2" => 238, "feb2" => 240, "2mar" => 249,
+		            "2apr" => 260, "2may" => 270, "j2un" => 279,
+		            "2jul" => 284, "2aug" => 283, "2sep" => 276,
+		            "2oct" => 265, "2nov" => 254, "2dec" => 242,);
+    $union = array_merge($temps2, $temps3);
+    print_r($union);
+
+    $union2 = array_unique($union);
+    print_r($union2);
+
+    // COUNT
+    echo count($union);
+
+    // IN ARRAY - bool  ARRAY_SEARCH - key   ARRAY_KEY_EXISTS
+    if (in_array("260", $temps3)) {
+    	echo "key exist!";
+    }
+
+    if (array_key_exists("2apr", $temps3)) {
+    	echo "key exist!";
+    }
+
+    // SERIALIZE UNSERIALIZE
+    echo serialize($temps3);
+    print_r(unserialize($temps3)); // ne pawe
+
+    // MULTI ARRAYS
+    $temps4 = array (
+    	1995 => array ("jan" => 36, "feb" => 42, "mar" => 51),
+    	1996 => array ("jan" => 37, "feb" => 42, "mar" => 49),
+    	1997 => array ("jan" => 34, "feb" => 40, "mar" => 50),
+    	);
+    print_r($temps4);
+
+    // Unit 8 REGULAR EXPRESSIONS
+    $phrase5 = "I love PHP";
+    if (ereg("PHP", $phrase5)){
+    	echo "Выражение найдено";
+    }
+
+    if (eregi("php", $phrase5)){
+    	echo "Выражение найдено";
+    }
+
+    if (eregi("[Pp][Hh][Pp]", $phrase5)){
+    	echo "Выражение найдено";
+    }
+
+    if (ereg("[A-Z]", $phrase5)){
+    	echo "есть буквы в верхнем регистре";
+    }
+
+    if (ereg("[^0-9]", $phrase5)){
+    	echo "в выражении нет цифр";
+    }
+
+    // EMAIL VARIFICATION
+    $email = "chris@lightwood.net";
+    if (ereg("^([^@]+)@([a-z]{2,4})$", $email, $match)) {
+    	echo "Почтовый ящик: ".$match[1]."<br>";
+    	echo "Имя домена:";
+    }
+
 
 
 
